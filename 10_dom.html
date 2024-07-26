@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+</head>
+<body>
+    <h1 id="header">Hello World</h1>
+    <p class="description">This is a paragraph.</p>
+    <p class="description">This is another paragraph.</p>
+    <button id="changeTextButton">Change Text</button>
+    <button id="addElementButton">Add New Element</button>
+    <button id="removeElementButton">Remove Last Element</button>
+    <button id="toggleClassButton">Toggle Highlight</button>
+    <script>
+        // 1. getElementById
+        const header = document.getElementById('header');
+        // 2. getElementsByClassName
+        const descriptions = document.getElementsByClassName('description');
+        // 3. getElementsByTagName
+        const paragraphs = document.getElementsByTagName('p');
+        // 4. querySelector
+        const changeTextButton = document.querySelector('#changeTextButton');
+        // 5. querySelectorAll
+        const allParagraphs = document.querySelectorAll('p');
+
+        // 6. createElement and appendChild
+        function createNewElement() {
+            const newParagraph = document.createElement('p');
+            newParagraph.textContent = 'This is a new paragraph.';
+            document.body.appendChild(newParagraph);
+        }
+
+        // 7. removeChild
+        function removeLastElement() {
+            if (document.body.lastElementChild.tagName === 'P') {
+                document.body.removeChild(document.body.lastElementChild);
+            }
+        }
+
+        // 8. replaceChild
+        function replaceElement() {
+            const newHeading = document.createElement('h2');
+            document.body.replaceChild(newHeading, header);
+        }
+
+        // 9. setAttribute
+        function setAttributes() {
+            header.setAttribute('class', 'highlight');
+        }
+
+        // 10. getAttribute
+        console.log(header.getAttribute('class')); // 'highlight'
+
+        // 11. removeAttribute
+        function removeAttributes() {
+            header.removeAttribute('class');
+        }
+
+        // 12. classList.add
+        function addClass() {
+            header.classList.add('highlight');
+        }
+
+        // 13. classList.remove
+        function removeClass() {
+            header.classList.remove('highlight');
+        }
+
+        // 14. classList.toggle
+        function toggleClass() {
+            header.classList.toggle('highlight');
+        }
+
+        // 15. classList.contains
+        console.log(header.classList.contains('highlight')); // true or false
+
+        // 16. innerHTML
+        function setInnerHTML() {
+            header.innerHTML = 'Updated <span>Header</span>';
+        }
+
+        // 17. textContent
+        function setTextContent() {
+            header.textContent = 'Updated Header';
+        }
+        // 18. style
+        function setStyle() {
+            header.style.color = 'red';
+        }
+        // Event Listeners
+        changeTextButton.addEventListener('click', setInnerHTML);
+        document.querySelector('#addElementButton').addEventListener('click', createNewElement);
+        document.querySelector('#removeElementButton').addEventListener('click', removeLastElement);
+        document.querySelector('#toggleClassButton').addEventListener('click', toggleClass);
+    </script>
+</body>
+</html>
